@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Karen’s Photography</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.10/css/pico.min.css">
+  <link rel="stylesheet" href="/css/baseline-style.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="/galleries/weddings.html">Galleries</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><strong><a href="contact.html">Contact</a></strong></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section>
+      <div class="container">
+        <h1>Contact Karen</h1>
+        <form>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+          <button type="submit">Send</button>
+          <!-- TODO: Connect to backend (Formspree/Netlify) -->
+        </form>
+        <div class="contact-info">
+          <p>Email: info@example.com</p>
+          <p>Phone: (555) 123-4567</p>
+          <!-- TODO: Add real contact info -->
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <small>&copy; 2025 Karen’s Photography. All rights reserved.</small>
+      <ul>
+        <li><a href="#" aria-label="Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="Facebook">Facebook</a></li>
+        <li><a href="mailto:info@example.com" aria-label="Email">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>

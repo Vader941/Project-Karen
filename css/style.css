@@ -1,0 +1,26 @@
+/* style.css — theme overrides only (lightweight) */
+
+:root {
+  --text: #222;               /* baseline text color override */
+  --accent: #e2b04a;          /* brand accent color */
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* Apply font + color globally */
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+}
+
+/* Link tweaks */
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Accent buttons */
+.button, button, input[type="submit"] {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+/* Optional scoped tweak */
+.gallery .rounded { border-radius: 8px; }
