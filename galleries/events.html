@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.10/css/pico.min.css">
   <link rel="stylesheet" href="/css/baseline-style.css">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -26,14 +29,18 @@
       <div class="container">
         <h1>Events</h1>
         <p><!-- TODO: Add real category description --></p>
-        <div class="gallery-grid">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+          <div><strong>Events</strong></div>
+          <div><button id="shuffleBtn" class="button">Shuffle</button></div>
+        </div>
+        <div class="gallery-grid" id="eventsGrid">
           <!-- Placeholder thumbnails -->
-          <a href="/images/events/placeholder1.jpg" class="lightbox"><img src="/images/events/placeholder1.jpg" alt="Event Photo 1"></a>
-          <a href="/images/events/placeholder2.jpg" class="lightbox"><img src="/images/events/placeholder2.jpg" alt="Event Photo 2"></a>
-          <a href="/images/events/placeholder3.jpg" class="lightbox"><img src="/images/events/placeholder3.jpg" alt="Event Photo 3"></a>
-          <a href="/images/events/placeholder4.jpg" class="lightbox"><img src="/images/events/placeholder4.jpg" alt="Event Photo 4"></a>
-          <a href="/images/events/placeholder5.jpg" class="lightbox"><img src="/images/events/placeholder5.jpg" alt="Event Photo 5"></a>
-          <a href="/images/events/placeholder6.jpg" class="lightbox"><img src="/images/events/placeholder6.jpg" alt="Event Photo 6"></a>
+          <a href="/images/events/placeholder1.jpg" class="lightbox"><img src="/images/events/placeholder1.jpg" alt="Event Photo 1" loading="lazy"><div class="caption">City gala — 2024</div></a>
+          <a href="/images/events/placeholder2.jpg" class="lightbox"><img src="/images/events/placeholder2.jpg" alt="Event Photo 2" loading="lazy"><div class="caption">Rooftop reception</div></a>
+          <a href="/images/events/placeholder3.jpg" class="lightbox"><img src="/images/events/placeholder3.jpg" alt="Event Photo 3" loading="lazy"><div class="caption">Candid moments</div></a>
+          <a href="/images/events/placeholder4.jpg" class="lightbox"><img src="/images/events/placeholder4.jpg" alt="Event Photo 4" loading="lazy"><div class="caption">Live performance</div></a>
+          <a href="/images/events/placeholder5.jpg" class="lightbox"><img src="/images/events/placeholder5.jpg" alt="Event Photo 5" loading="lazy"><div class="caption">Award ceremony</div></a>
+          <a href="/images/events/placeholder6.jpg" class="lightbox"><img src="/images/events/placeholder6.jpg" alt="Event Photo 6" loading="lazy"><div class="caption">Evening crowd</div></a>
         </div>
       </div>
     </section>
@@ -49,5 +56,6 @@
     </div>
   </footer>
   <script src="/js/main.js"></script>
+  <script src="/js/ai-theme.js"></script>
 </body>
 </html>

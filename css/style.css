@@ -1,26 +1,74 @@
-/* style.css — theme overrides only (lightweight) */
+/* style.css — Sunlit Editorial (theme/AI-dev) */
 
 :root {
-  --text: #222;               /* baseline text color override */
-  --accent: #e2b04a;          /* brand accent color */
+  --bg: #FFF8F0;      /* cream */
+  --panel: #FFF2E6;    /* lighter panels */
+  --text: #1f2933;     /* soft charcoal */
+  --muted: #6b6b66;    /* muted text */
+  --accent: #d77a3c;   /* burnt terracotta */
+  --accent-2: #f0c987; /* soft gold */
+
   --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
 }
 
-/* Apply font + color globally */
+html, body { background: var(--bg); }
 body {
   font-family: var(--font-sans);
   color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Link tweaks */
-a { text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* Typography */
+h1,h2,h3 { font-family: var(--font-serif); color: var(--text); }
+.lead { color: var(--muted); }
 
-/* Accent buttons */
-.button, button, input[type="submit"] {
-  border-color: var(--accent);
-  background: var(--accent);
+/* Links and buttons */
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-2); text-decoration: underline; }
+.button, button, input[type="submit"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* Layout helpers */
+.container { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+
+/* Hero: Sunlit Editorial */
+.hero-editorial {
+  position: relative;
+  background-color: var(--panel);
+  padding: 6rem 0 4rem;
+}
+.hero-editorial .hero-inner { display:flex; gap:2rem; align-items:center; }
+.hero-editorial .hero-image { flex:1 1 60%; border-radius:8px; overflow:hidden; box-shadow: 0 20px 40px rgba(15,15,15,0.06); }
+.hero-editorial .hero-image img { width:100%; height:100%; object-fit:cover; display:block; }
+.hero-editorial .hero-copy { flex:1 1 40%; }
+.hero-editorial h1 { margin:0 0 0.5rem; font-size: clamp(1.75rem, 4vw, 3rem); }
+.hero-editorial .tagline { font-size:1.125rem; color:var(--muted); }
+
+/* Feature grid (asymmetric) */
+.feature-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: start; }
+.feature-grid .large { border-radius:8px; overflow:hidden; }
+.feature-grid .small-grid { display:grid; gap:1rem; grid-template-rows: 1fr 1fr; }
+
+/* Gallery tiles - events gallery styling */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.gallery-grid a { position: relative; display:block; overflow:hidden; border-radius:8px; }
+.gallery-grid img { width:100%; height:100%; object-fit:cover; display:block; transition: transform .35s ease; }
+.gallery-grid a:hover img { transform: scale(1.04); }
+.gallery-grid .caption {
+  position: absolute; left:0; right:0; bottom:0; padding:0.6rem 0.75rem; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%); color:#fff; font-family:var(--font-serif); font-size:0.95rem;
 }
 
-/* Optional scoped tweak */
-.gallery .rounded { border-radius: 8px; }
+/* Small decorative accent for hover */
+.gallery-grid a:focus .caption, .gallery-grid a:hover .caption { background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%); }
+
+/* Subtle card lift */
+.card { background: #fff; border-radius:8px; padding:1rem; box-shadow: 0 10px 30px rgba(15,15,15,0.04); }
+
+@media (max-width: 800px) {
+  .hero-editorial .hero-inner { flex-direction: column; }
+  .feature-grid { grid-template-columns: 1fr; }
+}

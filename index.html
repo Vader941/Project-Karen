@@ -7,7 +7,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.10/css/pico.min.css">
   <link rel="stylesheet" href="/css/baseline-style.css">
   <link rel="stylesheet" href="/css/style.css">
-  <!-- TODO: Add Google Fonts if needed -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -23,11 +25,27 @@
     </div>
   </header>
   <main>
-    <section class="hero">
-      <div class="container">
-        <img src="/assets/logo-placeholder.png" alt="Karen's Photography Logo" style="max-width:150px;">
-        <h1>Karen’s Photography</h1>
-        <p class="tagline">Capturing moments, creating memories</p>
+    <section class="hero-editorial">
+      <div class="container hero-inner">
+        <div class="hero-image">
+          <img src="/images/hero1.svg" alt="Couple at sunset">
+        </div>
+        <div class="hero-copy">
+          <h1>Karen’s Photography</h1>
+          <p class="tagline lead">A creative storyteller capturing season-to-season stories — warm tones, candid moments, quiet portraits.</p>
+          <p><a class="button" href="/galleries/events.html">Explore Events</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Featured Work</h2>
+      <div class="feature-grid">
+        <div class="large"><img src="/images/weddings/placeholder1.jpg" alt="Featured Weddings" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:8px;"></div>
+        <div class="small-grid">
+          <img src="/images/portraits/placeholder1.jpg" alt="Portrait" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">
+          <img src="/images/family/placeholder1.jpg" alt="Family" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">
+        </div>
       </div>
     </section>
     <section>
