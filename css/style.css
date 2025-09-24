@@ -1,26 +1,102 @@
-/* style.css — theme overrides only (lightweight) */
-
+/* ===== theme/minimal-grid overrides ===== */
 :root {
-  --text: #222;               /* baseline text color override */
-  --accent: #e2b04a;          /* brand accent color */
-  --font-sans: 'Inter', system-ui, sans-serif;
+  /* Palette */
+  --bg: #ffffff;
+  --text: #111827;             /* slate-900 */
+  --muted-text: #6b7280;       /* slate-500 */
+  --accent: #2563eb;           /* blue-600 */
+  --accent-600: #1d4ed8;       /* blue-700 */
+  --border: #e5e7eb;           /* gray-200 */
+  --card: #ffffff;
+
+  /* Type & radii */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --radius: 14px;
+  --radius-sm: 10px;
+
+  /* Spacing */
+  --gutter: 1.25rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.25rem;
 }
+
+/* Headings tighten up, body comfortable */
+h1, h2, h3 { letter-spacing: .2px; }
+p { margin: 0 0 0.85rem; }
 
 /* Apply font + color globally */
 body {
   font-family: var(--font-sans);
   color: var(--text);
+  background: var(--bg);
 }
 
-/* Link tweaks */
+/* ===== Buttons ===== */
+.button, button, input[type="submit"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+}
+.button:hover, button:hover, input[type="submit"]:hover {
+  background: var(--accent-600);
+}
+
+/* Nav links: understated until hover */
+nav.site-nav a {
+  opacity: .9;
+  transition: opacity .15s ease, background .2s ease;
+}
+nav.site-nav a:hover { opacity: 1; }
+
+/* Hero alignment: left on desktop, centered on small */
+.hero p.lead { color: var(--muted-text); }
+
+/* Grid tiles: tidy shadows + hover zoom */
+.tile {
+  transition: transform .18s ease, box-shadow .25s ease, border-color .2s ease;
+  display: inline-block;
+}
+.tile:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 10px 28px rgba(0,0,0,.08);
+  border-color: rgba(37,99,235,.25);
+}
+
+/* Gallery thumbnails: subtle fade-in */
+.gallery a img {
+  transition: transform .18s ease, opacity .25s ease;
+  opacity: .98;
+}
+.gallery a:hover img {
+  transform: scale(1.01);
+  opacity: 1;
+}
+
+/* Cards: keep airy and consistent */
+.card { border-radius: var(--radius); }
+
+/* Footer: low-contrast, roomy */
+footer.site-footer { color: var(--muted-text); }
+
+/* Utility: container (if baseline doesn't have it) */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* Small responsive tweaks */
+@media (max-width: 600px) {
+  .container { padding-left: 1rem; padding-right: 1rem; }
+  .grid, .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Backwards compatibility and small existing tweaks */
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
-
-/* Accent buttons */
-.button, button, input[type="submit"] {
-  border-color: var(--accent);
-  background: var(--accent);
-}
-
-/* Optional scoped tweak */
 .gallery .rounded { border-radius: 8px; }

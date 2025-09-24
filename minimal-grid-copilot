@@ -1,0 +1,175 @@
+# Theme Build Guide — Minimal Grid
+
+**Goal:** Apply a clean, modern, lightweight theme that highlights photos with minimal UI.  
+**Branch:** `theme/minimal-grid`  
+**Scope:** Typography, color tokens, buttons, grid/galleries, subtle hover/zoom. No content changes.
+
+---
+
+## Design Direction
+
+- **Vibe:** Crisp, calm, gallery-first.
+- **Fonts:** Inter for UI, optional Playfair Display for big headings.
+- **Colors:** White background, near-black text, cool accent.
+- **Layout:** Even grid, generous whitespace, centered containers (already in main).
+- **Motion:** Tiny scale/opacity on hover; no heavy animations.
+
+---
+
+## Files to Modify
+
+- `/css/style.css` → **override tokens + small utilities only** (keep it minimal).
+- HTML **only if needed** for class hooks (e.g., add `.tile` class on gallery links). Do not change content.
+
+> Note: `baseline-style.css` handles structure (containers, hero, cards, gallery columns). This theme only adjusts tokens and small add-ons.
+
+---
+
+## Tokens & Rules (Copilot: implement these)
+
+### 1) CSS Variables (in `/css/style.css`)
+Override just the variables and a few small utilities:
+
+```css
+/* ===== theme/minimal-grid overrides ===== */
+:root {
+  /* Palette */
+  --bg: #ffffff;
+  --text: #111827;             /* slate-900 */
+  --muted-text: #6b7280;       /* slate-500 */
+  --accent: #2563eb;           /* blue-600 */
+  --accent-600: #1d4ed8;       /* blue-700 */
+  --border: #e5e7eb;           /* gray-200 */
+  --card: #ffffff;
+
+  /* Type & radii */
+  --font-sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --radius: 14px;
+  --radius-sm: 10px;
+
+  /* Spacing */
+  --gutter: 1.25rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.25rem;
+}
+
+/* Headings tighten up, body comfortable */
+h1, h2, h3 { letter-spacing: .2px; }
+p { margin: 0 0 0.85rem; }
+
+/* Buttons: minimal, rounded, strong accent */
+.button, button, input[type="submit"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  border-radius: 999px;
+}
+.button:hover, button:hover, input[type="submit"]:hover {
+  background: var(--accent-600);
+}
+
+/* Nav links: understated until hover */
+nav.site-nav a {
+  opacity: .9;
+  transition: opacity .15s ease, background .2s ease;
+}
+nav.site-nav a:hover { opacity: 1; }
+
+/* Hero alignment: left on desktop, centered on small */
+.hero p.lead { color: var(--muted-text); }
+
+/* Grid tiles: tidy shadows + hover zoom */
+.tile {
+  transition: transform .18s ease, box-shadow .25s ease, border-color .2s ease;
+}
+.tile:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 10px 28px rgba(0,0,0,.08);
+  border-color: rgba(37,99,235,.25);
+}
+
+/* Gallery thumbnails: subtle fade-in */
+.gallery a img {
+  transition: transform .18s ease, opacity .25s ease;
+  opacity: .98;
+}
+.gallery a:hover img {
+  transform: scale(1.01);
+  opacity: 1;
+}
+
+/* Cards: keep airy and consistent */
+.card { border-radius: var(--radius); }
+
+/* Footer: low-contrast, roomy */
+footer.site-footer { color: var(--muted-text); }
+```
+
+### 2) Optional Google Fonts (HTML `<head>`)
+If not already present, add:
+```html
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+```
+
+> If Playfair is used, only for H1/H2 on index/hero:
+```css
+h1, .display-serif { font-family: "Playfair Display", Georgia, serif; }
+```
+
+### 3) Class hooks (HTML) — only if missing
+Ensure gallery items use the `.tile` wrapper so hover/zoom applies:
+```html
+<a href="/images/weddings/large-01.jpg" class="tile" data-pswp-width="1600" data-pswp-height="1067">
+  <img src="/images/weddings/thumb-01.jpg" alt="Bride and groom at sunset">
+  <span class="overlay"></span>
+  <span class="label">View</span>
+</a>
+```
+
+---
+
+## Accessibility & Performance
+
+- All images must have meaningful `alt` text (already scaffolded).
+- Use `loading="lazy"` on gallery thumbs.
+- Keep motion subtle; respect reduced motion if you add bigger effects later.
+
+---
+
+## Acceptance Criteria (Copilot: verify before committing)
+
+- [ ] Typography uses Inter; headings look crisp; spacing comfortable.
+- [ ] Accent color updated across buttons/links.
+- [ ] Hero + sections remain centered within `.container`.
+- [ ] Gallery tiles show **subtle hover zoom** and feel clickable.
+- [ ] No layout regressions on mobile (≤ 400px) or large screens (≥ 1440px).
+- [ ] Lighthouse Performance ≥ 90 and Accessibility ≥ 90 on the homepage (local run ok).
+
+---
+
+## Git & Preview
+
+```bash
+# create and push branch
+git checkout -b theme/minimal-grid
+git add -A
+git commit -m "theme(minimal-grid): tokens, buttons, grid hover, typography"
+git push -u origin theme/minimal-grid
+```
+
+Set up your per-branch preview (Netlify/Vercel/GitHub Pages).  
+Add a **screenshot** and the **preview URL** to this README when deployed.
+
+---
+
+## Copilot Prompt (paste this)
+
+Implement the “Minimal Grid” theme as specified in README:
+1) In `/css/style.css`, add the provided theme variable overrides and utilities (palette, typography, buttons, grid tile hover, gallery image hover).
+2) Do not edit `baseline-style.css`. Keep structure and containers unchanged.
+3) Only add `.tile` class to gallery anchors if missing; no content changes.
+4) Ensure mobile and desktop look clean; no layout shifts.
+5) Run a quick HTML validation (close any open tags) and ensure all images keep `alt` text.
+6) When done, list the files changed and summarize the visual changes in a short commit message.
+
+Follow the Acceptance Criteria section before finishing.
